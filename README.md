@@ -39,13 +39,6 @@ Test card:
 - **Frontend:** React, TypeScript, Tailwind CSS
 - **Backend:** Supabase (Auth, Database, Edge Functions)
 - **Payments:** Stripe API (Checkout, Webhooks, Subscriptions)
-- **Deployment:** Lovable
-
----
-
-## 🌐 Live Demo
-
-👉 https://invoiceflow-play.lovable.app/
 
 ---
 
