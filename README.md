@@ -1,68 +1,106 @@
-# 🚀 InvoiceFlow – SaaS Invoicing Platform
+# InvoiceFlow
 
-A SaaS invoicing app where users can manage clients, create invoices, and handle subscriptions with Stripe.
+Full-stack SaaS invoicing platform built with modern web technologies.  
+Designed for freelancers and small teams to manage clients, invoices, and subscription-based billing in a clean, fast, and scalable environment.
+
+---
+
+## 🚀 Live Demo
+
+👉 https://invoiceflowhq.vercel.app
 
 ---
 
 ## ✨ Features
 
-- 🔐 Authentication (Sign up / Login)
-- 💳 Stripe subscription payments (Checkout + Customer Portal)
-- 📊 Analytics dashboard (revenue, clients, invoice status)
-- 🧾 Invoice management (create, update, track status)
-- 👥 Client management
-- 📈 Real-time UI updates for subscription status
-- 🔍 Search & filter invoices
-- 📥 Invoice PDF export
-- 🔔 Toast notifications & loading states
-- 📱 Fully responsive design
+- 🔐 Secure authentication (Supabase Auth)
+- 👥 Client management system
+- 🧾 Invoice creation and tracking
+- 💳 Subscription billing (Stripe - demo mode)
+- 📊 Real-time dashboard updates
+- ⚡ Fast and responsive UI
+- 🔄 Session persistence (no data leaks between users)
+- 🌐 Fully deployed and production-ready
 
 ---
 
-## 💳 Billing & Subscriptions
+## 🧠 Tech Stack
 
-- Integrated with Stripe (Test Mode)
-- Upgrade to Pro plan via Stripe Checkout
-- Automatic redirect after successful payment
-- Subscription status sync with backend
-- Customer Portal for managing billing (cancel, update card, etc.)
+**Frontend**
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
 
-Test card:
-```
-4242 4242 4242 4242 | Any future date | Any 3-digit CVC
-```
+**Backend / Services**
+- Supabase (Database + Auth)
+- Stripe (Subscription & billing - demo)
 
----
-
-## 🛠️ Tech Stack
-
-- **Frontend:** React, TypeScript, Tailwind CSS
-- **Backend:** Supabase (Auth, Database, Edge Functions)
-- **Payments:** Stripe API (Checkout, Webhooks, Subscriptions)
+**Deployment**
+- Vercel
 
 ---
 
-## 🧠 What I Learned
+## 🔐 Environment Variables
 
-- Building a full-stack SaaS application from scratch  
-- Integrating Stripe payments and handling subscription flows  
-- Managing authentication and protected routes  
-- Designing scalable UI/UX for dashboards  
-- Handling async state, loading, and error feedback  
+Create a `.env` file in the root:
 
----
-
-
-## Possible Improvements
-- Multi-user support (teams)
-- Role-based access (admin/user)
-- Email notifications
-- Advanced analytics
+VITE_SUPABASE_URL=your_supabase_url  
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key  
+VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key  
 
 ---
 
-## 📌 Project Status
+## ⚙️ Installation & Setup
 
-- Actively maintained
-- Built as a portfolio project
+git clone https://github.com/Dimson7777/invoiceflow-saas.git  
+cd invoiceflow-saas  
+npm install  
+npm run dev  
+
+---
+
+## 🧪 Production Build
+
+npm run build  
+npm run preview  
+
+---
+
+## 💳 Stripe Notes
+
+- Stripe is integrated in **demo/test mode**
+- No real payments are processed
+- Used to simulate real SaaS subscription flows
+
+---
+
+## 📌 Key Highlights
+
+- Built end-to-end as a real SaaS product  
+- Handles authentication, billing, and user data isolation  
+- Focus on production-level structure and scalability  
+- Clean UX with no AI-generated artifacts or templates  
+
+---
+
+## 🧩 Future Improvements
+
+- Invoice PDF export  
+- Email notifications  
+- Advanced analytics dashboard  
+- Team collaboration features  
+
+---
+
+## 👤 Author
+
+Dimitrije Bukejlovic  
+Full Stack Engineer  
+
+GitHub: https://github.com/Dimson7777  
+LinkedIn: https://www.linkedin.com/in/dimitrije-bukejlovic-9055a8400/  
+
+---
+
 
