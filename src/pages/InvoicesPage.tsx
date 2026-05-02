@@ -106,17 +106,35 @@ export default function InvoicesPage() {
       </div>
 
       {filtered.length === 0 ? (
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-16">
-            <FileText className="h-10 w-10 text-muted-foreground/30 mb-3" />
-            <p className="text-sm font-medium text-muted-foreground">
+        <div className="relative flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/70 bg-card/50 backdrop-blur-sm py-16 px-8 overflow-hidden gap-4 animate-fade-in transition-all duration-300 hover:border-primary/30 hover:shadow-md">
+          {/* Glow blob */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <div className="h-40 w-40 rounded-full bg-primary/5 blur-3xl animate-glow-pulse" />
+          </div>
+          {/* Floating icon */}
+          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-muted border border-border/60 empty-icon-float">
+            <FileText className="h-7 w-7 text-muted-foreground/50" />
+          </div>
+          <div className="relative text-center space-y-1.5">
+            <p className="text-sm font-semibold text-foreground">
               {invoices.length === 0 ? "No invoices yet" : "No matching invoices"}
             </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              {invoices.length === 0 ? "Create your first invoice to start tracking payments." : "Try a different search or filter."}
+            <p className="text-xs text-muted-foreground">
+              {invoices.length === 0
+                ? "Create your first invoice to start getting paid."
+                : "Try a different search or filter."}
             </p>
-          </CardContent>
-        </Card>
+          </div>
+          {invoices.length === 0 && (
+            <Button
+              size="sm"
+              className="relative mt-1 animate-pulse-soft transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_14px_hsl(var(--primary)/0.35)] hover:[animation-play-state:paused]"
+              onClick={() => setOpen(true)}
+            >
+              Create your first invoice
+            </Button>
+          )}
+        </div>
       ) : (
         <>
           {/* Desktop table */}

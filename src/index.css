@@ -625,3 +625,76 @@ tbody tr {
   animation: shimmer 1.5s ease-in-out infinite;
   border-radius: calc(var(--radius) - 4px);
 }
+
+/* ── Dashboard: ambient background blobs ─────────────── */
+.dashboard-ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(72px);
+}
+.dashboard-ambient-blob-a {
+  top: -8%;
+  right: -6%;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.07) 0%, transparent 70%);
+  animation: blob-drift 24s ease-in-out infinite;
+}
+.dark .dashboard-ambient-blob-a {
+  background: radial-gradient(circle, hsl(var(--primary) / 0.10) 0%, transparent 70%);
+}
+.dashboard-ambient-blob-b {
+  bottom: 5%;
+  left: -8%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, hsl(260 80% 60% / 0.05) 0%, transparent 70%);
+  animation: blob-drift 32s ease-in-out infinite reverse;
+  animation-delay: -12s;
+}
+.dark .dashboard-ambient-blob-b {
+  background: radial-gradient(circle, hsl(260 80% 60% / 0.07) 0%, transparent 70%);
+}
+
+/* Dashboard dot grid overlay */
+.dashboard-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, hsl(var(--foreground) / 0.028) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Dashboard: card hover lift ───────────────────────── */
+.dashboard-card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.dashboard-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--primary) / 0.18);
+  box-shadow: var(--shadow-elevated), 0 0 0 1px hsl(var(--primary) / 0.08);
+}
+
+/* ── Dashboard: empty state icon float ───────────────── */
+.empty-icon-float {
+  animation: preview-float-soft 5s ease-in-out infinite;
+}
+
+/* ── Dashboard: analytics ghost bars (shimmer) ────────── */
+.ghost-bar {
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.06) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.2s ease-in-out infinite;
+}
+.ghost-bar:nth-child(2) { animation-delay: 0.2s; }
+.ghost-bar:nth-child(3) { animation-delay: 0.4s; }
+.ghost-bar:nth-child(4) { animation-delay: 0.6s; }
+.ghost-bar:nth-child(5) { animation-delay: 0.8s; }
+.ghost-bar:nth-child(6) { animation-delay: 1.0s; }

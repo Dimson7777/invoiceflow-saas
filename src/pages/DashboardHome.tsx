@@ -1,5 +1,5 @@
 import { useApp } from "@/contexts/AppContext";
-import { DollarSign, Users, FileText, TrendingUp, Loader2 } from "lucide-react";
+import { DollarSign, Users, FileText, TrendingUp, CheckCircle2, BarChart2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -73,23 +73,100 @@ export default function DashboardHome() {
   // Empty state for brand new users
   if (clients.length === 0 && invoices.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 animate-fade-in">
-        <FileText className="h-10 w-10 text-muted-foreground/30 mb-4" />
-        <h2 className="text-lg font-semibold text-foreground">Welcome to InvoiceFlow</h2>
-        <p className="text-sm text-muted-foreground mt-1 mb-6 text-center max-w-sm">
-          Start by adding a client, then create your first invoice.
-        </p>
-        <div className="flex gap-3">
-          <Link to="/dashboard/clients">
-            <Button variant="outline" size="sm">Add a client</Button>
-          </Link>
-          <Link to="/dashboard/invoices">
-            <Button size="sm">New invoice</Button>
-          </Link>
+      <div className="relative flex flex-col items-center justify-center py-16 px-4 animate-fade-in overflow-hidden">
+        {/* Subtle animated background blobs */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center"
+        >
+          <div className="h-[380px] w-[380px] rounded-full bg-primary/5 blur-3xl animate-glow-pulse" />
         </div>
-        <p className="text-xs text-muted-foreground mt-8 max-w-xs text-center">
-          Tip: After creating an invoice, you can change its status to Paid directly from the list.
-        </p>
+        {/* Subtle dot grid */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.55,
+          }}
+        />
+
+        {/* Main onboarding card */}
+        <div className="relative w-full max-w-md">
+          {/* Glow ring */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-primary/10 blur-xl animate-glow-pulse"
+          />
+          <Card className="relative border border-border/60 shadow-elevated rounded-2xl bg-card/90 backdrop-blur-sm">
+            <CardContent className="flex flex-col items-center pt-10 pb-8 px-8 text-center gap-5">
+              {/* Icon */}
+              <div className="flex items-center justify-center h-14 w-14 rounded-2xl bg-primary/10 border border-primary/20 shadow-sm">
+                <FileText className="h-7 w-7 text-primary" />
+              </div>
+
+              <div className="space-y-2">
+                <h2 className="text-xl font-bold text-foreground tracking-tight">
+                  Let&apos;s get your first invoice out 🚀
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Add a client, create an invoice, and start tracking payments in minutes.
+                </p>
+              </div>
+
+              {/* CTA buttons */}
+              <div className="flex gap-3 pt-1">
+                <Link to="/dashboard/clients">
+                  <Button
+                    size="sm"
+                    className="transition-all duration-200 hover:scale-[1.04] hover:shadow-[0_0_14px_hsl(var(--primary)/0.35)]"
+                  >
+                    Add a client
+                  </Button>
+                </Link>
+                <Link to="/dashboard/invoices">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="transition-all duration-200 hover:scale-[1.04] hover:border-primary/50 hover:text-primary animate-pulse-soft"
+                  >
+                    New invoice
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Trust line */}
+              <p className="text-[11px] text-muted-foreground/70 pt-1">
+                Everything updates automatically as you create invoices.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Step indicators */}
+        <div className="mt-8 w-full max-w-md grid grid-cols-3 gap-3">
+          {[
+            { num: 1, label: "Add client", icon: Users, done: false },
+            { num: 2, label: "Create invoice", icon: FileText, done: false },
+            { num: 3, label: "Get paid", icon: BarChart2, done: false },
+          ].map((step) => (
+            <div
+              key={step.num}
+              className="flex flex-col items-center gap-2 rounded-xl border border-border/60 bg-card/70 backdrop-blur-sm p-3.5 text-center transition-all duration-200 hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 hover:bg-card cursor-default"
+            >
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-muted border border-border text-xs font-bold text-muted-foreground">
+                {step.done ? (
+                  <CheckCircle2 className="h-4 w-4 text-success" />
+                ) : (
+                  step.num
+                )}
+              </div>
+              <span className="text-[11px] font-medium text-muted-foreground leading-tight">{step.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -98,7 +175,7 @@ export default function DashboardHome() {
     <div className="space-y-6 animate-fade-in">
       <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => (
-          <Card key={s.title}>
+          <Card key={s.title} className="dashboard-card-hover">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-xs font-medium text-muted-foreground">{s.title}</CardTitle>
               <s.icon className="h-4 w-4 text-muted-foreground" />
@@ -112,7 +189,7 @@ export default function DashboardHome() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+        <Card className="dashboard-card-hover">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm">Recent invoices</CardTitle>
@@ -156,7 +233,7 @@ export default function DashboardHome() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="dashboard-card-hover">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm">Clients</CardTitle>
