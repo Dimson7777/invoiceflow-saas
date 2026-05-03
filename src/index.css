@@ -367,6 +367,54 @@
   100% { transform: translate(0, 0); opacity: 0.3; }
 }
 
+/* ── Hero notification badge fade-slide-in ────────────── */
+@keyframes badge-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.landing-badge-in {
+  animation: badge-slide-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Paid pill emerald glow pulse ─────────────────────── */
+@keyframes paid-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(142 68% 52% / 0);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 8px 2px hsl(142 68% 52% / 0.38);
+    opacity: 0.85;
+  }
+}
+
+.animate-paid-glow {
+  animation: paid-glow-pulse 2.8s ease-in-out infinite;
+}
+
+/* ── Hero headline fade-in-up animation ───────────────── */
+@keyframes hero-headline-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-headline-animate {
+  animation: hero-headline-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (max-width: 768px) {
   .landing-stars-c {
     display: none;

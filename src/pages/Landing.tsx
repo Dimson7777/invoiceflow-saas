@@ -76,9 +76,10 @@ const TRUST_TOOLS = ["Stripe", "Tailwind CSS", "Supabase", "React", "TypeScript"
 
 function StatusPill({ status }: { status: string }) {
   const tone = status === "Paid" ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400";
+  const anim = status === "Paid" ? "animate-paid-glow" : "animate-pulse-soft";
 
   return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium animate-pulse-soft ${tone}`}>
+    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium ${anim} ${tone}`}>
       {status}
     </span>
   );
@@ -102,7 +103,7 @@ function FloatCard({
   return (
     <div className={`absolute z-20 ${className}`} style={{ transform: `rotate(${rotate})` }}>
       <div
-        className="hidden sm:flex items-center gap-2.5 rounded-xl border border-border/70 bg-card/75 backdrop-blur-md px-3.5 py-2.5 shadow-elevated landing-mini-float"
+        className="hidden sm:flex items-center gap-2.5 rounded-xl border border-border/70 bg-card/75 backdrop-blur-md px-3.5 py-2.5 shadow-elevated landing-mini-float landing-badge-in"
         style={{ animationDelay: delay }}
       >
         <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-background/90">
@@ -334,7 +335,7 @@ export default function Landing() {
                 Built for freelancers
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white/95 leading-[1.08]">
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white/95 leading-[1.08] hero-headline-animate">
                 Stop chasing invoices.
                 <br />
                 <span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-sky-300 bg-clip-text text-transparent">Start getting paid</span>
